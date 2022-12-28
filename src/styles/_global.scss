@@ -1,0 +1,147 @@
+@import 'components/color';
+@import 'mixin';
+
+* {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  color: $black-900;
+}
+
+body {
+  margin: 0;
+  font-style: normal;
+  background: #fff;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+mat-dialog-container {
+  border-radius: 16px !important;
+}
+.mobile:not(.sidenav__mobile) {
+  display: none;
+}
+
+.channel-type-item {
+  padding: 16px;
+
+  .icon {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    margin-left: 8px;
+  }
+
+  &.p-0 {
+    padding: 0;
+  }
+}
+
+*::-webkit-scrollbar {
+  background-color: $white-100;
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: $white-100;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+  border-radius: 16px;
+  border: 4px solid #fff;
+}
+
+*::-webkit-scrollbar-button {
+  display:none;
+}
+
+.s-content {
+  padding: 32px;
+  gap: 8px;
+
+  &-item {
+    column-gap: 8px;
+
+    span.active {
+      text-decoration-line: line-through;
+      color: #C2C2C6;
+    }
+
+    .icon {
+      background-color: $triadic3-800;
+    }
+
+    &:not(.icon) {
+      @include text(16px, 24px, 600)
+    }
+
+    .disabled {
+      text-decoration: line-through;
+      color: #C2C2C6;
+    }
+  }
+
+  &-line {
+    width: 100%;
+    height: 1px;
+    background: $triadic3-50;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .desktop {
+    display: none !important;
+  }
+
+  .mobile {
+    display: flex !important;
+  }
+  mat-dialog-container {
+    padding: 16px !important;
+  }
+
+  .cdk-overlay-pane {
+    max-width: calc(100vw - 32px) !important;
+  }
+}
+
+.drag-btn {
+  padding: 10px !important;
+  cursor: move;
+
+  .icon {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+  }
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}

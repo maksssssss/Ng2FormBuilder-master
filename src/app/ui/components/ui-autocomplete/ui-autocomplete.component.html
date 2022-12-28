@@ -1,0 +1,12 @@
+<ng-container>
+  <input type='text'
+         class='mark-autocomplete'
+         [(ngModel)]='tagValue'
+         (ngModelChange)='changeMark($event)'
+         [placeholder]="'SUBSCRIBERS.MODAL.ENTER_LABEL' | translate"
+         [matAutocomplete]='auto'>
+  <mat-autocomplete #auto='matAutocomplete'>
+    <mat-option *ngFor='let mark of (copyItems?.length ? copyItems : [])' [value]='mark[labelKey]'>{{ mark[labelKey] }}</mat-option>
+  </mat-autocomplete>
+
+</ng-container>

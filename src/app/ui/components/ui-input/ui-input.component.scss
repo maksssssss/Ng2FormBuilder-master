@@ -1,0 +1,161 @@
+@import 'src/styles/components/color';
+@import 'src/styles/mixin';
+
+:host {
+  display: inline-block;
+
+  &.disabled {
+    background-color: red;
+  }
+}
+
+.ui-input {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: rgba(246, 247, 251, 0.24);
+    border: 1px solid $black-500;
+    border-radius: 8px;
+    cursor: text;
+    min-width: 300px;
+    transition: 120ms ease;
+    height: 48px;
+
+    &.focused {
+      border-color: $main-color-800;
+    }
+
+    .used {
+      .ui-input__suffix {
+        cursor: pointer;
+      }
+    }
+
+    &.disabled {
+      background: $black-100;
+      border: 1px solid $black-100;
+      border-radius: 8px;
+    }
+  }
+
+  &__container.focused &__placeholder {
+    transform: translateY(-16px);
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: $black-900;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+  }
+
+  &__input {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    width: 100%;
+  }
+
+  &__suffix {
+    margin-left: 8px;
+    position: relative;
+    display: flex;
+
+    .icon {
+      width: 16px;
+      min-width: 16px;
+      height: 16px;
+      background: $main-color-800;
+    }
+  }
+
+  &__text {
+    @include text(12px, 12px, 400, $black-700);
+  }
+
+  .icon-close-fill {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background: $black-500;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .ui-input {
+    &__container {
+      min-width: 100%;
+      padding: 12px;
+      height: 36px;
+    }
+
+    &__label {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 8px;
+    }
+
+    &__input {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+    &__suffix .icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+:host {
+  &.ui-input-xs {
+    .ui-input {
+      &__container {
+        padding: 12px;
+        height: 36px;
+      }
+
+      &__label {
+        font-size: 14px;
+        line-height: 16px;
+        margin-bottom: 4px;
+      }
+
+      &__input {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 12px;
+      }
+
+      &__suffix, &__prefix {
+        .icon {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url('~src/assets/icons/сalender.svg') no-repeat;
+  width: 16px;
+  height: 16px;
+  border-width: thin;
+}

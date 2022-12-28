@@ -1,0 +1,114 @@
+@import "color";
+
+table.mat-table {
+  background-color: transparent;
+  border-spacing: 0 2px !important;
+}
+
+.mat-table thead {
+  height: 68px !important;
+
+  tr.mat-header-row {
+    background: $white-100;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+
+    th:first-child {
+      border-bottom-left-radius: 8px;
+      border-top-left-radius: 8px;
+    }
+
+    th:last-child {
+      border-bottom-right-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+}
+
+.mat-table {
+  th.mat-header-cell, td {
+    @include text(14px, 16px, 400, $black-700);
+  }
+
+  tr.mat-row {
+    height: 68px !important;
+    background-color: $white-100;
+
+    td:first-child,
+    td:nth-child(2),
+    th:first-child,
+    th:nth-child(2){
+      min-width: 64px;
+    }
+
+    td:last-child,
+    th:last-child {
+      min-width: 50px;
+    }
+
+    td {
+      border: none;
+    }
+
+    td:first-child {
+      border-bottom-left-radius: 8px;
+      border-top-left-radius: 8px;
+    }
+
+    td:last-child {
+      border-bottom-right-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+}
+
+::ng-deep .mat-sort-header-arrow {
+
+  .mat-sort-header-stem {
+    display: none;
+  }
+  .mat-sort-header-indicator {
+    opacity: 1;
+    color: black;
+    font-weight: bold;
+
+    .mat-sort-header-pointer-left, .mat-sort-header-pointer-right, .mat-sort-header-pointer-middle  {
+      display: none;
+    }
+  }
+}
+
+[aria-sort="ascending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        width: 16px;
+        height: 16px;
+        background-image: url("~src/assets/icons/sort-down.svg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+}
+
+[aria-sort="descending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: '';
+        position: absolute;
+        top: -12px;
+        width: 16px;
+        height: 16px;
+        background-image: url("~src/assets/icons/sort-down.svg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

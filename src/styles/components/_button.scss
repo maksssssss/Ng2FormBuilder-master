@@ -1,0 +1,212 @@
+@import 'color';
+@import 'src/styles/mixin';
+@import 'src/styles/breakpoints';
+
+.btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 200ms;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration: none;
+
+  .btn-prefix,
+  .btn-suffix {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  .btn-prefix {
+    margin-right: 16px;
+  }
+
+  .btn-suffix {
+    margin-left: 16px;
+  }
+
+  &-primary {
+    background-color: $main-color-800;
+    box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+    color: $white-100;
+
+    .btn-prefix.icon,
+    .btn-suffix.icon {
+      background: $white-100;
+    }
+
+    &:hover {
+      background-color: $main-color-600;
+      box-shadow: 0 8px 12px 6px rgba(0, 0, 0, 0.15),
+      0 4px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    &:disabled {
+      background-color: $black-100;
+      color: $black-700;
+      box-shadow: none;
+
+      .btn-prefix.icon,
+      .btn-suffix.icon {
+        background: $black-700;
+      }
+    }
+  }
+
+  &-secondary {
+    background-color: transparent;
+    border: 1px solid $black-500;
+    color: $black-700;
+
+    .btn-prefix.icon,
+    .btn-suffix.icon {
+      background: $black-700;
+    }
+  }
+
+  &-danger {
+    background: $error-500;
+    box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+    color: $white-100;
+    @include text(16px, 24px, 500, $white-100);
+  }
+
+  &-success {
+    background: $success-500;
+    box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+    color: $white-100;
+    @include text(16px, 24px, 500, $white-100);
+  }
+
+  &-only-icon {
+    padding: 12px;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      background: $black-700;
+      margin-right: 0;
+      padding: 12px;
+    }
+  }
+  &-only-icon {
+    padding: 12px;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      background: $black-700;
+      margin-right: 0;
+      padding: 12px;
+    }
+  }
+  &-only-icon {
+    padding: 12px;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      background: $black-700;
+      margin-right: 0;
+      padding: 12px;
+    }
+  }
+  &-tertiary {
+    background-color: transparent;
+    color: $black-700;
+
+    .btn-prefix.icon,
+    .btn-suffix.icon {
+      background: $black-700;
+    }
+
+    &:hover .icon {
+      background: $main-color-800;
+    }
+  }
+
+  &-secondary,
+  &-tertiary {
+    &:hover {
+      border-color: $main-color-800;
+      color: $main-color-800;
+
+      .btn-prefix.icon,
+      .btn-suffix.icon {
+        background: $main-color-800;
+      }
+    }
+
+    &:disabled {
+      color: $black-500;
+      border-color: $black-300;
+
+      .btn-prefix.icon,
+      .btn-suffix.icon {
+        background: $black-500;
+      }
+    }
+  }
+
+  &-dashed {
+    border: 1px dashed;
+  }
+
+  &-sm {
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &-xs {
+    padding: 10px 16px;
+    font-size: 12px;
+    line-height: 16px;
+
+    .btn-prefix,
+    .btn-suffix {
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-prefix {
+      margin-right: 8px;
+    }
+
+    .btn-suffix {
+      margin-left: 8px;
+    }
+  }
+
+  &-icon {
+    padding: 16px;
+
+    .btn-prefix,
+    .btn-suffix {
+      margin: 0 !important;
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+
+  &-icon &-sm {
+    padding: 12px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  @include for-tablet {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 10px 16px;
+  }
+}

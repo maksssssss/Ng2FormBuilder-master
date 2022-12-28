@@ -1,0 +1,146 @@
+@import "src/styles/components/color";
+@import "src/styles/breakpoints";
+@import "src/styles/mixin";
+
+.ui-select {
+  &__container {
+    height: 48px;
+    border: 1px solid $black-500;
+    border-radius: 8px;
+    transition: 200ms ease;
+    padding: 0 16px;
+    cursor: pointer;
+    background: rgba(246, 247, 251, 0.24);
+
+    &.focused {
+      border-color: $main-color-800;
+    }
+
+    @include for-tablet {
+      width: 100%;
+      height: 36px;
+    }
+  }
+
+  &__content {
+    margin-right: 6px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+
+    &_placeholder {
+      color: $black-500;
+      text-align: left;
+    }
+
+    &_value {
+      text-align: left;
+
+      @include for-tablet {
+        span {
+          @include text(14px, 16px, 400);
+        }
+      }
+    }
+  }
+
+  &__arrow {
+    transform: rotate(90deg);
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    background: $main-color-800;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: $black-900;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+
+    @include for-tablet {
+      @include text(14px, 16px, 400);
+    }
+  }
+
+  &.disabled &__container {
+    background-color: $black-100;
+    border-color: transparent;
+    cursor: not-allowed;
+  }
+
+  &.disabled &__container_placeholder {
+    color: $black-500;
+  }
+}
+
+.ui-select-dropdown {
+  width: 100%;
+  background: $white-100;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  transition: 200ms ease;
+  overflow: auto;
+  height: 100%;
+  max-height: 250px;
+
+  &__item {
+    cursor: pointer;
+    display: flex;
+    column-gap: 8px;
+
+    &:hover {
+      background-color: rgba(227, 242, 253, 0.5);
+    }
+
+    .ui-select-dropdown-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+:host {
+  &.ui-select-xs {
+    .ui-select {
+      &__container {
+        padding: 12px;
+        height: 36px;
+      }
+
+      &__label {
+        font-size: 14px;
+        line-height: 16px;
+        margin-bottom: 4px;
+      }
+
+      &__content {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 12px;
+      }
+
+      &__suffix, &__prefix {
+        .icon {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .ui-select-dropdown-item {
+  padding: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+
+  @include for-tablet {
+    @include text(14px, 16px, 400);
+  }
+}

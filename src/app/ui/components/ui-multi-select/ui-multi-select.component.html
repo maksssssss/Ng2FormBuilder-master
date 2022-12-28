@@ -1,0 +1,62 @@
+<div
+  class="ui-select"
+  cdkOverlayOrigin
+  appOutsideClick
+  #trigger="cdkOverlayOrigin"
+  [class.disabled]="disable"
+  (click)="toggleDropdown()"
+  (clickOutside)="isOpen = false"
+>
+  <div class="ui-select__label" *ngIf="label">{{ label | translate }}</div>
+  <div
+    class="ui-select__container d-flex align-items-center justify-content-between"
+  >
+    <div class="ui-select__content">
+      <div class="ui-select__content_placeholder" *ngIf="!selectedItems.length">
+        {{ placeholder || 'Выберите значение' }}
+      </div>
+      <div class="ui-select__content_value" *ngIf="selectedItems.length">
+        <ng-template #defaultLabelTemplate>
+          <div class='d-flex flex-wrap column-gap-8 row-gap-8 select-list'>
+            <div class='d-flex align-items-center column-gap-4 select-item' *ngFor='let item of selectedItems; let idx = index'>
+              {{ item[labelKey] | translate }}
+              <span (click)='removeItem($event, idx)' class='icon icon-close'></span>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template
+          [ngTemplateOutlet]="labelTemplate || defaultLabelTemplate"
+          [ngTemplateOutletContext]="{ item: selectedItems, item$: selectedItems }"
+        >
+        </ng-template>
+      </div>
+    </div>
+    <span class="icon icon-right ui-select__arrow"></span>
+  </div>
+</div>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayWidth]="trigger.elementRef.nativeElement.offsetWidth"
+>
+  <div class="ui-select-dropdown">
+    <ng-container *ngFor="let item of items; let i = index">
+      <div class="ui-select-dropdown__item" (click)="onSelect(item)">
+        <ng-template #defaultOptionTemplate>
+          <div class="ui-select-dropdown-item d-flex align-items-center column-gap-8">
+            <img *ngIf='item?.type' [src]="'./assets/icons/' + item.type +  '.svg'" alt=''>
+            {{ labelKey ? (item[labelKey] | translate) : item.label | translate }}
+          </div>
+        </ng-template>
+
+        <ng-template
+          [ngTemplateOutlet]="optionTemplate || defaultOptionTemplate"
+          [ngTemplateOutletContext]="{ item: item, item$: item, index: i }"
+        >
+        </ng-template>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

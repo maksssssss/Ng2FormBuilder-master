@@ -1,3 +1,9 @@
-<div class="form-controls">
-
+<div class="example-container">
+  <div
+    cdkDropList
+    [cdkDropListData]="control"
+    [cdkDropListConnectedTo]="'formContainer'"
+    class="example-list">
+    <div class="example-box" *ngFor="let item of control" cdkDrag>{{item.label}}</div>
+  </div>
 </div>

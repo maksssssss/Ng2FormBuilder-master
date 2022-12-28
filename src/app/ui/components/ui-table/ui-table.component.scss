@@ -1,0 +1,100 @@
+.table-container {
+  display: flex;
+  flex: 1;
+  max-width: 100%;
+  overflow: auto;
+}
+.add_row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+  border: 1px solid #BDC3C7;
+  cursor: pointer;
+  padding: 0.5rem 26px 0.5rem 0.5rem;
+  position: relative;
+  background-color: #eee;
+}
+.params-table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+
+
+  tr {
+    position: relative;
+  }
+
+  td {
+    position: relative;
+    padding: 5px;
+
+    .edit-cell {
+      height: 100%;
+      width: 100%;
+      padding: 5px;
+    }
+  }
+
+  .th {
+    padding-right: 30px;
+  }
+
+  .col-menu {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 8px);
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    font-size: 15px;
+    cursor: pointer;
+
+  }
+
+  .row-action {
+    position: absolute;
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
+}
+
+.table-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+
+  mat-icon {
+    margin-left: 10px;
+  }
+}
+
+.menu-list {
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 1px 7px 1px #0003;
+
+  li {
+    list-style-type: none;
+    border-bottom: solid 1px #8b8b8b;
+    padding: 8px 10px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: rgba(27, 31, 35, 0.1);
+    }
+  }
+
+}

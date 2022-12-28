@@ -1,0 +1,40 @@
+<div class="ui-input">
+  <div class="ui-input__label" *ngIf="label?.length">{{ label }}</div>
+  <div
+    class="ui-input__container"
+    [class.disabled]='disabled'
+    appOutsideClick
+    [class.focused]="focused"
+    (clickOutside)="focused = false"
+    (click)="formField.focus(); focused = true"
+  >
+    <input
+      class="ui-input__input"
+      #formField
+      [type]="type"
+      [disabled]="disabled"
+      [placeholder]="placeholder"
+      [(ngModel)]="inputControl"
+      [min]='0'
+      (ngModelChange)="onInputChange()"
+    />
+
+    <div *ngIf='text' class='ui-input__text'>{{text}}</div>
+
+    <div
+      class="ui-input__suffix icon icon-close-fill"
+      *ngIf="inputControl?.length && !disabled"
+      (click)="inputControl = ''; onInputChange()"
+    ></div>
+
+    <div [class.used]="isClickIconUsed">
+      <div
+        class="ui-input__suffix"
+        *ngIf="suffixIcon?.length"
+        (click)="onClickIcon()"
+      >
+        <span class="icon {{ suffixIcon }}"></span>
+      </div>
+    </div>
+  </div>
+</div>

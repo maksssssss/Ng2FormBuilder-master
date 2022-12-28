@@ -1,0 +1,184 @@
+@import 'color';
+
+.text {
+  /* DECORATIONS */
+  &-d1,
+  &-d2,
+  &-d3,
+  &-d4,
+  &-d5,
+  &-d6,
+  &-d7,
+  &-d8,
+  &-d9 {
+    font-style: normal;
+    font-weight: 700;
+    color: $black-900;
+  }
+
+  &-d1 {
+    font-size: 56px;
+    line-height: 56px;
+  }
+
+  &-d2 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  &-d3 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  &-d4 {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  &-d5 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  &-d6 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  &-d7 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  &-d8 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  &-d9 {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  /* DECORATIONS END */
+
+  /* BUTTONS */
+  &-btn-normal,
+  &-btn-caps,
+  &-btn-sm,
+  &-btn-xs {
+    font-style: normal;
+    font-weight: 700;
+    color: $black-900;
+  }
+
+  &-btn-normal {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &-btn-caps {
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &-btn-sm {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  &-btn-xs {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  /* BUTTONS END */
+
+  /* INPUTS */
+  &-input-normal,
+  &-input-sm,
+  &-input-normal-note,
+  &-input-sm-note {
+    font-style: normal;
+    font-weight: 400;
+    color: $black-900;
+  }
+
+  &-input-normal {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  &-input-sm {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  &-input-normal-note {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &-input-sm-note {
+    font-size: 10px;
+    line-height: 10px;
+  }
+
+  /* BUTTONS END */
+
+  /* TEXTS */
+  &-20 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &-18 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &-16 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &-14 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &-12 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &-10 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  &-20,
+  &-18,
+  &-16,
+  &-14,
+  &-12,
+  &-10 {
+    color: $black-900;
+    font-style: normal;
+
+    &-R {
+      font-weight: 400;
+    }
+
+    &-SB {
+      font-weight: 600;
+    }
+
+    &-B {
+      font-weight: 700;
+    }
+  }
+}

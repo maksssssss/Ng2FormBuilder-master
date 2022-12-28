@@ -1,0 +1,29 @@
+/* LORA FONT */
+@font-face {
+  font-family: Lora;
+  font-weight: normal;
+  src: url('../../assets/fonts/lora/Lora-Regular.ttf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lora;
+  src: url('../../assets/fonts/lora/Lora-Bold.ttf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lora;
+  font-weight: normal;
+  font-style: italic;
+  src: url('../../assets/fonts/lora/Lora-Italic.ttf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lora;
+  font-weight: bold;
+  font-style: italic;
+  src: url('../../assets/fonts/lora/Lora-BoldItalic.ttf') format('opentype');
+  font-display: swap;
+}

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {Control} from "../../core/models/control";
 
 @Component({
   selector: 'app-form-container',
@@ -7,20 +8,35 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag
   styleUrls: ['./form-container.component.scss']
 })
 export class FormContainerComponent {
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  form: Control[] = [];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
-  drop(event: CdkDragDrop<string[]>) {
+  createController(event: CdkDragDrop<any[]>) {
+    console.log(event)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      const data = JSON.parse(JSON.stringify(event.previousContainer.data))
       transferArrayItem(
-        event.previousContainer.data,
+        data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
       );
     }
+  }
+
+  zoom(item: Control, type: 'out' | 'in') {
+    const zoomMin = 0.5;
+    if (item.zoom) {
+      if (+item.zoom.toFixed(0) <= zoomMin && type === 'out') {
+        return;
+      }
+      if (type === 'out') {
+        item.zoom -= 0.1
+      } else {
+        item.zoom += 0.1
+      }
+    }
+
   }
 }

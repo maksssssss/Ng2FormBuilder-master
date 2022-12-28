@@ -1,0 +1,64 @@
+@import 'color';
+
+.tab {
+  width: 100%;
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-bottom: 2px solid $black-300;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+
+  &__link {
+    padding: 8px 16px 4px;
+    color: $black-500;
+    border-bottom: 2px solid transparent;
+    transition: 250ms ease;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-decoration: none;
+
+    &:hover {
+      color: $main-color-600;
+      border-color: $main-color-300;
+    }
+
+    &.active {
+      color: $main-color-800;
+      border-color: $main-color-800;
+    }
+
+    &:disabled,
+    &.disabled {
+      color: $black-500;
+      border-color: $black-300;
+      background-color: rgba(246, 247, 251, 0.5);
+      cursor: not-allowed;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .tab {
+    &__header {
+      justify-content: center;
+    }
+
+    &__link {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}

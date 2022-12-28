@@ -1,0 +1,79 @@
+@import "color";
+@import "src/styles/mixin";
+
+.mat-custom-panel {
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 16px !important;
+  width: 190px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  padding: 16px 24px;
+  cursor: pointer;
+  border: none;
+  background: $white-100;
+  width: 100%;
+
+  &:disabled {
+    opacity: 0.4;
+  }
+
+  @include text(16px, 16px, 400, $black-700);
+
+  &:last-child {
+    border-top: 1px solid $black-200;
+  }
+
+  &:hover {
+    background: rgba(227, 242, 253, 0.5);
+    color: $main-color-800;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    background: $main-color-800;
+  }
+
+  .icon-person-dash {
+    background-color: $error-500;
+  }
+
+  .icon-person-plus {
+    background-color: $success-500;
+  }
+
+  &.REMOVE, &.REMOVE_ALL {
+    color: $error-500;
+
+    .icon {
+      background: $error-500;
+    }
+  }
+}
+
+.mat-menu-content:not(:empty) {
+  padding: 0 !important;
+}
+
+.mat-custom-panel {
+  min-height: 100% !important;
+  width: 100% !important;
+}
+
+.error-message {
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    background-color: $error-500;
+  }
+
+  @include text(12px, 16px, 400, $error-500);
+}

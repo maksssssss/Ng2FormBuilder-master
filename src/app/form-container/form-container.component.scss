@@ -1,60 +1,117 @@
-.form-container {
-  width: 80vw;
-  height: 100%;
-  background: red;
-}
+.form {
+  &-container {
 
-.example-container {
-  width: 400px;
-  max-width: 100%;
-  margin: 0 25px 25px 0;
-  display: inline-block;
-  vertical-align: top;
-}
 
-.example-list {
-  border: solid 1px #ccc;
-  min-height: 60px;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
-}
+    .btn-container {
+      display: none;
+      align-items: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      gap: 10px;
 
-.example-box {
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  cursor: move;
-  background: white;
-  font-size: 14px;
-}
+      .control-btn {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
 
-.cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-  0 8px 10px 1px rgba(0, 0, 0, 0.14),
-  0 3px 14px 2px rgba(0, 0, 0, 0.12);
-}
+        .icon {
+          width: 20px;
+          height: 20px;
+        }
 
-.cdk-drag-placeholder {
-  opacity: 0;
-}
+        &:hover {
+          .icon {
+            background: #fff;
+          }
 
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
+          &.delete {
+            background: #ab2424;
+          }
 
-.example-box:last-child {
-  border: none;
-}
+          &.edit {
+            background: #d07509;
+          }
+        }
+      }
+    }
 
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    .control-settings {
+      display: block;
+    }
+  }
+
+  &-control {
+    box-shadow: 0 0 7px 0px rgb(0 0 0 / 24%);
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    background: #fff;
+    position: relative;
+
+    &-list {
+      min-width: 60vw;
+      min-height: 80vh;
+      border: 2px dashed silver;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: 0.3s;
+
+      &-item {
+        position: relative;
+        transition: 0.5s;
+
+        &:hover {
+          .btn-container {
+            display: flex;
+          }
+        }
+      }
+
+      &.noEmpty {
+        border-color: transparent;
+      }
+    }
+
+    .pdf-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: absolute;
+      right: 40px;
+      bottom: 40px;
+
+      .zoom-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #babac0;
+        border-radius: 8px;
+      }
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        border: 1px solid silver;
+        cursor: pointer;
+        background: #272727;
+      }
+    }
+
+    &__label {
+      display: flex;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+  }
 }

@@ -1,0 +1,36 @@
+@import "src/styles/breakpoints";
+
+.alert {
+  padding: 16px;
+  display: flex;
+  column-gap: 8px;
+
+  @include for-tablet {
+    padding: 8px;
+  }
+
+  &-title, &-text {
+    @include text(12px, 16px, 700);;
+
+    @include for-tablet {
+      @include text(10px, 12px, 700)
+    }
+  }
+
+  &-text {
+    font-weight: 400;
+    @include for-tablet {
+      @include text(10px, 12px, 400);
+    }
+  }
+
+  &-warning {
+    background: $attention-50;
+    border-radius: 8px;
+
+    .icon {
+      background-color: $attention-500;
+      min-width: 24px;
+    }
+  }
+}

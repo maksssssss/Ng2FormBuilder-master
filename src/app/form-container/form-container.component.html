@@ -1,29 +1,122 @@
 <div class="form-container">
-  <div class="example-container">
-    <h2>To do</h2>
 
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[doneList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-    </div>
-  </div>
+  <div
+    cdkDropList
+    [id]="'formContainer'"
+    [cdkDropListData]="form"
+    class="form-control-list"
+    [class.noEmpty]="form.length"
+    (cdkDropListDropped)="createController($event)">
+    <div class="form-control-list-item" *ngFor="let item of form" cdkDrag>
+      <div class="btn-container">
+        <div class="control-btn edit" (click)="item.isEdit = !item.isEdit">
+          <span class="icon icon-pen"></span>
+        </div>
+        <div class="control-btn delete">
+          <span class="icon icon-close"></span>
+        </div>
+      </div>
+      <ng-container [ngSwitch]="item.type">
+        <ng-container *ngSwitchCase="'text'">
+          <ui-input
+            [type]="'text'"
+            class="form-control"
+            [label]="item.label ?? ''"
+            [(ngModel)]="item.value"
+          ></ui-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'number'">
+          <ui-input
+            [type]="'number'"
+            class="form-control"
+            [label]="item.label ?? ''"
+            [(ngModel)]="item.value"
+          ></ui-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'email'">
+          <ui-input
+            [type]="'email'"
+            class="form-control"
+            [label]="item.label ?? ''"
+            [(ngModel)]="item.value"
+          ></ui-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'password'">
+          <ui-input
+            [type]="'password'"
+            class="form-control"
+            [label]="item.label ?? ''"
+            [(ngModel)]="item.value"
+          ></ui-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'date'">
+          <ui-input
+            [type]="'date'"
+            class="form-control"
+            [label]="item.label ?? ''"
+            [(ngModel)]="item.value"
+          ></ui-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'time'">
+          <ui-input
+            [type]="'time'"
+            class="form-control"
+            [label]="item.label ?? ''"
+            [(ngModel)]="item.value"
+          ></ui-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'checkbox-group'">
+          <section class="d-flex flex-column form-control {{item.class}}">
+            <label class="form-control__label">{{item.label}}</label>
+            <mat-checkbox color="primary"
+                          class=""
+                          *ngFor="let option of item.options"
+                          (ngModelChange)="item.value = option.value"
+                          [(ngModel)]="option.value">{{option.label}}</mat-checkbox>
+          </section>
+        </ng-container>
+        <ng-container *ngSwitchCase="'radio-group'">
+          <section class="d-flex flex-column form-control {{item.class}}">
+            <label class="form-control__label">{{item.label}}</label>
+            <mat-radio-group [(ngModel)]="item.value" class="d-flex flex-column">
+              <mat-radio-button class=""
+                                color="primary"
+                                *ngFor="let option of item.options"
+                                (change)="item.value = option.selected"
+                                [value]="option.selected">{{option.label}}</mat-radio-button>
+            </mat-radio-group>
+          </section>
+        </ng-container>
+        <ng-container *ngSwitchCase="'pdf'">
+          <section class="form-control {{item.class}}">
+            <label class="form-control__label">{{item.label}}</label>
+            <pdf-viewer [src]="item.src ?? ''"
+                        [render-text]="true"
+                        [original-size]="false"
+                        [zoom]="item.zoom ?? 1"
+                        style="width: 100%; height: 500px"
+            ></pdf-viewer>
+            <div class="pdf-controls">
+              <div class="zoom-btn" (click)="zoom(item, 'out')">
+                <div class="icon icon-zoom-out"></div>
+              </div>
+              <div class="zoom-btn" (click)="zoom(item, 'in')">
+                <div class="icon icon-zoom-in"></div>
+              </div>
+            </div>
+          </section>
+        </ng-container>
+        <ng-container *ngSwitchCase="'table'">
+          <section class="form-control {{item.class}}">
+            <label class="form-control__label">{{item.label}}</label>
+            <ui-table></ui-table>
+          </section>
+        </ng-container>
 
-  <div class="example-container">
-    <h2>Done</h2>
 
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+      </ng-container>
+
+      <app-control-settings *ngIf="item.isEdit" class="control-settings" [control]="item"></app-control-settings>
     </div>
   </div>
 </div>

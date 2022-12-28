@@ -1,0 +1,29 @@
+.mat-checkbox-frame {
+  border: 1px solid $main-color-800;
+  border-radius: 2px;
+  width: 24px;
+  height: 24px;
+}
+
+.mat-checkbox-checked.mat-primary .mat-checkbox-background {
+  background: url("~src/assets/icons/tick-white.svg") center center no-repeat $main-color-800;
+  background-size: 16px;
+
+  svg.mat-checkbox-checkmark {
+    display: none
+  }
+}
+
+.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {
+  background: $main-color-800;
+}
+
+.mat-checkbox-inner-container {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.mat-checkbox-mixedmark {
+  width: calc(100% - 12px) !important;
+  height: 1px !important;
+}

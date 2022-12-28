@@ -1,0 +1,104 @@
+@import 'src/styles/mixin';
+@import 'src/styles/components/color';
+@import 'src/styles/breakpoints';
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(37, 37, 40, 0.25) !important;
+}
+.mat-dialog-container {
+  box-shadow: none !important;
+}
+
+.dialog {
+  &__content {
+    margin-top: 2.5px;
+
+    .icon {
+      width: 43px;
+      height: 43px;
+
+      &-delete,
+      &-stop,
+      &-delete_channel,
+      &-trash {
+        background-color: $error-500;
+      }
+
+      &-copy, &-check-circle {
+        background-color: $main-color-800;
+      }
+
+      &-run {
+        background-color: $success-500;
+      }
+
+      @include for-tablet {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  .btn-ok {
+    margin: 24px 0 0;
+
+    @include for-tablet {
+      margin: 16px 0 0;
+      padding: 10px 16px;
+    }
+  }
+
+  &__title {
+    margin: 24px 0 0 0;
+    @include text(28px, 28px, 700);
+
+    @include for-tablet {
+      margin: 16px 0 0 0;
+      @include text(20px, 20px, 700);
+    }
+  }
+
+  &__text {
+    margin: 24px 0;
+    @include text(14px, 16px, 400, $black-700);
+
+    @include for-tablet {
+      margin: 16px 0;
+      @include text(12px, 16px, 400, $black-700);
+    }
+  }
+
+  .btn-tertiary {
+    margin: 8px 0 0 0;
+    @include text(16px, 24px, 500, $black-700);
+  }
+
+  .btn {
+    &.copy {
+      background: $main-color-800;
+    }
+
+    &.run {
+      background: $success-500;
+    }
+  }
+
+  &__more {
+    display: none;
+
+    @include for-tablet {
+      display: block;
+    }
+  }
+
+  @include for-tablet {
+    .btn {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &__cancel {
+      display: none;
+    }
+  }
+}

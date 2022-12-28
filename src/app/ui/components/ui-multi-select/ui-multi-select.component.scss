@@ -1,0 +1,35 @@
+@import "src/styles/components/color";
+@import "src/styles/breakpoints";
+@import "src/styles/mixin";
+@import "src/app/modules/ui/components/ui-select/ui-select.component";
+
+.ui-select {
+  &__container {
+    height: 100%;
+    min-height: 48px;
+    padding: 8px 16px;
+
+    .select-item {
+      background: $main-color-50;
+      border-radius: 4px;
+      padding: 8px 16px;
+      @include text(16px, 16px, 400, $black-900);
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .icon-close {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+
+::ng-deep .ui-select-dropdown-item > img {
+  width: 16px;
+  height: 16px;
+}
