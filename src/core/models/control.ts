@@ -1,6 +1,7 @@
 export interface Control {
   icon?: string
   label?: string
+  placeholder?: string
   class?: string,
   value?: any,
   isEdit?: boolean,
@@ -9,6 +10,7 @@ export interface Control {
   min?: number,
   max?: number,
   maxLength?: number,
+  required?: boolean,
   tooltip?: string,
   options?: {
     label: string,

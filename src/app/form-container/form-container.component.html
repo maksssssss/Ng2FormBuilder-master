@@ -20,16 +20,24 @@
         <ng-container *ngSwitchCase="'text'">
           <ui-input
             [type]="'text'"
-            class="form-control"
+            class="form-control {{item.class}}"
             [label]="item.label ?? ''"
+            [tooltip]="item.tooltip ?? ''"
+            [placeholder]="item.placeholder ?? ''"
+            [maxlength]="item.maxLength ?? ''"
             [(ngModel)]="item.value"
           ></ui-input>
         </ng-container>
         <ng-container *ngSwitchCase="'number'">
           <ui-input
             [type]="'number'"
-            class="form-control"
+            class="form-control {{item.class}}"
             [label]="item.label ?? ''"
+            [tooltip]="item.tooltip ?? ''"
+            [placeholder]="item.placeholder ?? ''"
+            [maxlength]="item.maxLength ?? ''"
+            [min]="item.min ?? 0"
+            [max]="item.max ?? 0"
             [(ngModel)]="item.value"
           ></ui-input>
         </ng-container>
@@ -38,6 +46,8 @@
             [type]="'email'"
             class="form-control"
             [label]="item.label ?? ''"
+            [tooltip]="item.tooltip ?? ''"
+            [placeholder]="item.placeholder ?? ''"
             [(ngModel)]="item.value"
           ></ui-input>
         </ng-container>
@@ -46,6 +56,8 @@
             [type]="'password'"
             class="form-control"
             [label]="item.label ?? ''"
+            [tooltip]="item.tooltip ?? ''"
+            [placeholder]="item.placeholder ?? ''"
             [(ngModel)]="item.value"
           ></ui-input>
         </ng-container>
@@ -54,6 +66,8 @@
             [type]="'date'"
             class="form-control"
             [label]="item.label ?? ''"
+            [tooltip]="item.tooltip ?? ''"
+            [placeholder]="item.placeholder ?? ''"
             [(ngModel)]="item.value"
           ></ui-input>
         </ng-container>
@@ -62,12 +76,18 @@
             [type]="'time'"
             class="form-control"
             [label]="item.label ?? ''"
+            [tooltip]="item.tooltip ?? ''"
+            [placeholder]="item.placeholder ?? ''"
             [(ngModel)]="item.value"
           ></ui-input>
         </ng-container>
         <ng-container *ngSwitchCase="'checkbox-group'">
           <section class="d-flex flex-column form-control {{item.class}}">
-            <label class="form-control__label">{{item.label}}</label>
+            <label class="form-control__label">
+               <span *ngIf="item.label?.length">{{ item.label }}</span>
+    <span *ngIf="item.tooltip?.length" matTooltipPosition="above" matTooltip="{{item.tooltip}}"
+          class="icon icon-help-circle"></span>
+            </label>
             <mat-checkbox color="primary"
                           class=""
                           *ngFor="let option of item.options"
@@ -77,7 +97,11 @@
         </ng-container>
         <ng-container *ngSwitchCase="'radio-group'">
           <section class="d-flex flex-column form-control {{item.class}}">
-            <label class="form-control__label">{{item.label}}</label>
+            <label class="form-control__label">
+               <span *ngIf="item.label?.length">{{ item.label }}</span>
+    <span *ngIf="item.tooltip?.length" matTooltipPosition="above" matTooltip="{{item.tooltip}}"
+          class="icon icon-help-circle"></span>
+            </label>
             <mat-radio-group [(ngModel)]="item.value" class="d-flex flex-column">
               <mat-radio-button class=""
                                 color="primary"
@@ -89,7 +113,11 @@
         </ng-container>
         <ng-container *ngSwitchCase="'pdf'">
           <section class="form-control {{item.class}}">
-            <label class="form-control__label">{{item.label}}</label>
+            <label class="form-control__label">
+               <span *ngIf="item.label?.length">{{ item.label }}</span>
+    <span *ngIf="item.tooltip?.length" matTooltipPosition="above" matTooltip="{{item.tooltip}}"
+          class="icon icon-help-circle"></span>
+            </label>
             <pdf-viewer [src]="item.src ?? ''"
                         [render-text]="true"
                         [original-size]="false"
@@ -108,7 +136,11 @@
         </ng-container>
         <ng-container *ngSwitchCase="'table'">
           <section class="form-control {{item.class}}">
-            <label class="form-control__label">{{item.label}}</label>
+            <label class="form-control__label">
+               <span *ngIf="item.label?.length">{{ item.label }}</span>
+    <span *ngIf="item.tooltip?.length" matTooltipPosition="above" matTooltip="{{item.tooltip}}"
+          class="icon icon-help-circle"></span>
+            </label>
             <ui-table></ui-table>
           </section>
         </ng-container>

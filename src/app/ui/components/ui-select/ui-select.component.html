@@ -7,7 +7,11 @@
   (click)="toggleDropdown()"
   (clickOutside)="isOpen = false"
 >
-  <div class="ui-select__label" *ngIf="label">{{ label | translate }}</div>
+  <div class="ui-input__label">
+    <span *ngIf="label?.length">{{ label }}</span>
+    <span *ngIf="tooltip?.length" matTooltipPosition="above" matTooltip="{{tooltip}}"
+          class="icon icon-help-circle"></span>
+  </div>
   <div
     class="ui-select__container d-flex align-items-center justify-content-between"
   >

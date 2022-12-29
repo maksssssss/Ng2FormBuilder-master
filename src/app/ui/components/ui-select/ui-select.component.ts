@@ -37,6 +37,8 @@ export class UiSelectComponent implements ControlValueAccessor {
   @Input() items: any[] = [];
   @Input() placeholder: string = '';
   @Input() label!: string;
+  @Input()
+  tooltip!: string;
   @Input() valueKey!: string;
   @Input() labelKey!: string;
   @Input() disable: boolean = false;

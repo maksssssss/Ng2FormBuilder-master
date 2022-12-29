@@ -59,8 +59,17 @@
     line-height: 24px;
     color: $black-900;
     margin-bottom: 8px;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     text-align: left;
+
+    .icon-help-circle {
+      width: 20px;
+      height: 20px;
+      background: #343A40;
+      cursor: pointer;
+    }
 
     @include for-tablet {
       @include text(14px, 16px, 400);

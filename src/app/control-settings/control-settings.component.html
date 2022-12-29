@@ -1,10 +1,13 @@
 <div class="control-settings-container">
-  <mat-checkbox>Обезателный</mat-checkbox>
-  <ui-input [label]="'Название'"></ui-input>
-  <ui-input [label]="'Заполнитель (Placeholder)'"></ui-input>
-  <ui-input [label]="'Класс'"></ui-input>
-  <ui-input [label]="'Значение'"></ui-input>
-  <ui-input [type]="'number'" [label]="'Минимум'"></ui-input>
-  <ui-input [type]="'number'" [label]="'Максимум'"></ui-input>
-  <ui-input [type]="'number'" [label]="'Максимальное количество символов'"></ui-input>
+  <mat-checkbox [(ngModel)]="control.required">Обезателный</mat-checkbox>
+  <ui-input [(ngModel)]="control.label" [label]="'Название'"></ui-input>
+  <ui-input
+    *ngIf="control.type !== 'table' && control.type !== 'pdf'"
+    [(ngModel)]="control.placeholder" [label]="'Заполнитель (Placeholder)'"></ui-input>
+  <ui-input [(ngModel)]="control.class" [label]="'Класс'"></ui-input>
+  <ui-input [(ngModel)]="control.tooltip" [label]="'Подсказка (Tooltip)'"></ui-input>
+  <ui-input [(ngModel)]="control.value" [label]="'Значение'"></ui-input>
+  <ui-input [(ngModel)]="control.min" *ngIf="control.type === 'number'" [type]="'number'" [label]="'Минимум'"></ui-input>
+  <ui-input [(ngModel)]="control.max" *ngIf="control.type === 'number'" [type]="'number'" [label]="'Максимум'"></ui-input>
+  <ui-input [(ngModel)]="control.maxLength" [type]="'number'" [label]="'Максимальное количество символов'"></ui-input>
 </div>

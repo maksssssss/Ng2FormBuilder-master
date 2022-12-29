@@ -29,6 +29,9 @@ export class UiInputComponent implements ControlValueAccessor, OnInit {
   label!: string;
 
   @Input()
+  tooltip!: string;
+
+  @Input()
   placeholder = '';
 
   @Input()
@@ -42,6 +45,10 @@ export class UiInputComponent implements ControlValueAccessor, OnInit {
 
   @Input()
   disabled = false;
+  @Input()
+  min: number = 0;
+  @Input()
+  max!: number;
 
   @Input()
   text!: string;
@@ -81,5 +88,14 @@ export class UiInputComponent implements ControlValueAccessor, OnInit {
 
   onClickIcon() {
     this.clickIcon.emit(this.type);
+  }
+
+
+  checkValid() {
+    if (this.min !== null && this.min !== undefined) {
+      if (+this.inputControl > this.min) {
+        this.inputControl = '' + this.min;
+      }
+    }
   }
 }

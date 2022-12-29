@@ -15,6 +15,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {UiTableComponent} from './components/ui-table/ui-table.component';
 import {MatIconModule} from "@angular/material/icon";
 import {UiSelectComponent} from "./components/ui-select/ui-select.component";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 const COMPONENTS = [
   UiInputComponent,
@@ -41,7 +42,7 @@ const MODULES = [
 
 @NgModule({
     declarations: [...COMPONENTS, ...DIRECTIVES],
-  imports: [...MODULES],
+    imports: [...MODULES, MatTooltipModule],
     exports: [...COMPONENTS, ...DIRECTIVES],
 })
 export class UiModule {

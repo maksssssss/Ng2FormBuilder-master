@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Control} from "../../core/models/control";
-import {IUiSelect} from "../ui/components/ui-select/ui-select.component";
 
 @Component({
   selector: 'app-control-settings',

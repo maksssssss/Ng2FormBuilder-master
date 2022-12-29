@@ -1,5 +1,9 @@
 <div class="ui-input">
-  <div class="ui-input__label" *ngIf="label?.length">{{ label }}</div>
+  <div class="ui-input__label">
+    <span *ngIf="label?.length">{{ label }}</span>
+    <span *ngIf="tooltip?.length" matTooltipPosition="above" matTooltip="{{tooltip}}"
+          class="icon icon-help-circle"></span>
+  </div>
   <div
     class="ui-input__container"
     [class.disabled]='disabled'
@@ -15,7 +19,8 @@
       [disabled]="disabled"
       [placeholder]="placeholder"
       [(ngModel)]="inputControl"
-      [min]='0'
+      [min]='min'
+      [max]='max'
       (ngModelChange)="onInputChange()"
     />
 
