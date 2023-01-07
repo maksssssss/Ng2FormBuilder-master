@@ -74,8 +74,8 @@ export class FormContainerComponent {
   }
 
   addItemToLayout(control: Control) {
-    const maxId = this.layout.reduce((acc, cur) => Math.max(acc, parseInt(cur.id, 10)), -1);
-    const nextId = maxId + 1;
+    const lastItem = this.layout.at(-1);
+    const nextId = Date.now();
     let x = 0;
     let y = 0;
     let h = 2.1;
@@ -84,9 +84,9 @@ export class FormContainerComponent {
     } else if (control.type === 'pdf') {
       h = 12;
     }
-    if (nextId > 0) {
-      console.log(this.layout[maxId])
-      y = this.layout[maxId].h;
+    if (lastItem) {
+      console.log(lastItem)
+      y = lastItem.h;
     }
 
     const newLayoutItem: CustomGridItem = {
