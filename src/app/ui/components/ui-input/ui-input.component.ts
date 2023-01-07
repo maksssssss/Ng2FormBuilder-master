@@ -32,6 +32,9 @@ export class UiInputComponent implements ControlValueAccessor, OnInit {
   tooltip!: string;
 
   @Input()
+  hint!: string;
+
+  @Input()
   placeholder = '';
 
   @Input()

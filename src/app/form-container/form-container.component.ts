@@ -88,7 +88,7 @@ export class FormContainerComponent {
       x,
       y,
       w: 6,
-      h: 2,
+      h: 2.1,
       data: control
     };
 

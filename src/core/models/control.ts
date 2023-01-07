@@ -12,6 +12,7 @@ export interface Control {
   maxLength?: number,
   required?: boolean,
   tooltip?: string,
+  hint?: string,
   options?: {
     label: string,
     key: string,
