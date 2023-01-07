@@ -78,6 +78,12 @@ export class FormContainerComponent {
     const nextId = maxId + 1;
     let x = 0;
     let y = 0;
+    let h = 2.1;
+    if (control.type === 'table') {
+      h = 3.5;
+    } else if (control.type === 'pdf') {
+      h = 12;
+    }
     if (nextId > 0) {
       console.log(this.layout[maxId])
       y = this.layout[maxId].h;
@@ -88,7 +94,7 @@ export class FormContainerComponent {
       x,
       y,
       w: 6,
-      h: 2.1,
+      h,
       data: control
     };
 
