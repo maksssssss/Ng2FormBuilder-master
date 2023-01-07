@@ -15,6 +15,9 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {KtdGridModule} from "@katoid/angular-grid-layout";
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
@@ -32,25 +35,28 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FormControlsPanelComponent,
     ControlSettingsComponent
   ],
-    imports: [
-        BrowserModule,
-        DragDropModule,
-        UiModule,
-        FormsModule,
-        MatCheckboxModule,
-        HttpClientModule,
-        MatRadioModule,
-        PdfViewerModule,
-        TranslateModule.forRoot({
-            defaultLanguage: localStorage.getItem('lang') || 'ru',
-            loader: {
-                provide: TranslateLoader,
-                useFactory: createTranslateLoader,
-                deps: [HttpClient],
-            },
-        }),
-        MatTooltipModule,
-    ],
+  imports: [
+    BrowserModule,
+    DragDropModule,
+    UiModule,
+    FormsModule,
+    MatCheckboxModule,
+    HttpClientModule,
+    MatRadioModule,
+    PdfViewerModule,
+    TranslateModule.forRoot({
+      defaultLanguage: localStorage.getItem('lang') || 'ru',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
+    MatTooltipModule,
+    KtdGridModule,
+    MatButtonModule,
+    MatDialogModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

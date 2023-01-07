@@ -1,4 +1,4 @@
 <div class="main">
-  <app-form-container></app-form-container>
-  <app-form-controls-panel></app-form-controls-panel>
+  <app-form-container [mode]="mode"></app-form-container>
+  <app-form-controls-panel *ngIf="mode === 'edit'"></app-form-controls-panel>
 </div>

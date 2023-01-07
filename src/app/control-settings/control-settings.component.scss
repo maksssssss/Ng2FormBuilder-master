@@ -1,9 +1,75 @@
 .control-settings-container {
+  overflow: auto;
   display: flex;
   flex-direction: column;
-  background: #cecece6b;
   border-radius: 5px;
-  overflow: hidden;
-  padding: 10px;
+  padding: 20px;
   gap: 8px;
+}
+
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.control-options {
+  display: flex;
+  flex-direction: column;
+
+  .mat-form-field-label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #252528;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+
+      .removeOptions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: #fff0;
+        border: 0;
+        .icon {
+          width: 24px;
+          height: 24px;
+          background: red;
+        }
+      }
+    }
+  }
+
+  .addOption {
+    cursor: pointer;
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid #0070ab;
+    width: 240px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0070ab;
+    margin: 10px 0 0 auto;
+
+    .icon {
+      background: #0070ab;
+    }
+  }
 }

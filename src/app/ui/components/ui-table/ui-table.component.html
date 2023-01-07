@@ -1,7 +1,7 @@
 <div class="table-container">
   <table class="params-table" [border]="1">
     <tr>
-      <td class="th" *ngFor="let th of table.columns; let ii = index">
+      <td class="th" *ngFor="let th of tableData.columns; let ii = index">
         <input class="edit-cell" [(ngModel)]="th.colName" (input)="log($event)">
 
         <mat-icon class="col-menu" (click)="openColMenu(th, $event)" type="button" cdkOverlayOrigin
@@ -23,7 +23,7 @@
       </td>
     </tr>
 
-    <tr *ngFor="let row of table.rows; let i = index">
+    <tr *ngFor="let row of tableData.rows; let i = index">
 
       <td *ngFor="let td of row">
         <input class="edit-cell" [(ngModel)]="td.value" (input)="log($event)">

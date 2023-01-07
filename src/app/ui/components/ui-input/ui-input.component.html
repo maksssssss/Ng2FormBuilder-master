@@ -1,6 +1,6 @@
 <div class="ui-input">
-  <div class="ui-input__label">
-    <span *ngIf="label?.length">{{ label }}</span>
+  <div class="ui-input__label" *ngIf="label?.length">
+    <span>{{ label }}</span>
     <span *ngIf="tooltip?.length" matTooltipPosition="above" matTooltip="{{tooltip}}"
           class="icon icon-help-circle"></span>
   </div>

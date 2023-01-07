@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
-export interface RowModel {
-  rowId: string,
-  isHeader: boolean,
-  cells: {
-    cellId: string,
-    value: string | number
-  }[]
+export interface TableModel {
+  columns: {
+    colName: string
+    isOpen: boolean
+  }[],
+  rows: {
+    value: string
+  }[][]
 }
 
 @Component({
@@ -15,7 +16,9 @@ export interface RowModel {
   styleUrls: ['./ui-table.component.scss']
 })
 export class UiTableComponent implements OnInit {
-  table = {
+  @Output() onChangeTable: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input() tableData: TableModel = {
     columns: [
       {
         colName: 'Column Name 1',
@@ -38,7 +41,7 @@ export class UiTableComponent implements OnInit {
         isOpen: false,
       }
     ],
-    rows: []
+    rows: [[{value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}]]
   };
 
 
@@ -50,30 +53,34 @@ export class UiTableComponent implements OnInit {
 
   // 1 === Left; 2 === Right
   addCol(index: number, pos: number): void {
-    this.table.columns.splice(index + pos, 0, {colName: '', isOpen: false});
-    this.table.rows.forEach((item: any) => {
+    this.tableData.columns.splice(index + pos, 0, {colName: '', isOpen: false});
+    this.tableData.rows.forEach((item: any) => {
       item.splice(index + pos, 0, '');
     });
+    this.onChangeTable.emit();
   }
 
   deleteCol(index: number): void {
-    this.table.columns.splice(index, 1);
-    this.table.rows.forEach((item: any) => {
+    this.tableData.columns.splice(index, 1);
+    this.tableData.rows.forEach((item: any) => {
       item.splice(index, 1);
     });
+    this.onChangeTable.emit();
   }
 
   addRow(): void {
     const cells: any[] = [];
-    for (let i = 0; i < this.table.columns.length; i++) {
+    for (let i = 0; i < this.tableData.columns.length; i++) {
       cells.push({value: ''});
     }
     // @ts-ignore
-    this.table.rows.push(cells);
+    this.tableData.rows.push(cells);
+    this.onChangeTable.emit();
   }
 
   deleteRow(index: number): void {
-    this.table.rows.splice(index, 1);
+    this.tableData.rows.splice(index, 1);
+    this.onChangeTable.emit();
   }
 
 
@@ -82,7 +89,7 @@ export class UiTableComponent implements OnInit {
       event.stopPropagation();
       event.preventDefault();
     }
-    this.table.columns.forEach(x => x.isOpen = false);
+    this.tableData.columns.forEach(x => x.isOpen = false);
     col.isOpen = !col.isOpen;
   }
 

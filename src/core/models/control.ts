@@ -14,8 +14,9 @@ export interface Control {
   tooltip?: string,
   options?: {
     label: string,
-    value: string | number,
-    selected: boolean,
+    key: string,
+    value: string | number | boolean,
+    selected?: boolean,
   }[],
   type: 'email' | 'password' | 'text' | 'number' | 'date' | 'time' | 'select' | 'autocomplete' | 'checkbox-group' | 'radio-group' | 'pdf' | 'table',
 }
