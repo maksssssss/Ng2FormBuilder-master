@@ -9,7 +9,6 @@ import {UiModule} from "./ui/ui.module";
 import {FormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
-import {PdfViewerModule} from "ng2-pdf-viewer";
 import { ControlSettingsComponent } from './control-settings/control-settings.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
@@ -18,6 +17,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {KtdGridModule} from "@katoid/angular-grid-layout";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
+import {PdfJsViewerModule} from "ng2-pdfjs-viewer";
+import {PinchZoomModule} from "./ui/components/pinch-zoom/pinch-zoom.module";
 
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
@@ -43,7 +44,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MatCheckboxModule,
     HttpClientModule,
     MatRadioModule,
-    PdfViewerModule,
+    PdfJsViewerModule,
+    PinchZoomModule,
     TranslateModule.forRoot({
       defaultLanguage: localStorage.getItem('lang') || 'ru',
       loader: {

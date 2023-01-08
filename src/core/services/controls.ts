@@ -120,5 +120,12 @@ export const CONTROLS: Control[] = [
       ],
       rows: [[{value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}]]
     }
-  }
+  },
+  {
+    label: 'IMG',
+    type: 'img',
+    class: 'my-class',
+    src: 'https://lzhd.github.io/ng-picture-viewer/assets/p3.jpg',
+    zoom: 1
+  },
 ]

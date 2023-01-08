@@ -16,6 +16,9 @@
 
 
         <div class="btn-container" *ngIf="mode === 'edit'">
+          <div ktdGridDragHandle class="control-btn drag">
+            <span class="icon icon-drag"></span>
+          </div>
           <div class="control-btn edit" (click)="openEditDialog(item)">
             <span class="icon icon-pen"></span>
           </div>
@@ -108,11 +111,14 @@
                 <span *ngIf="item.data.tooltip?.length" matTooltipPosition="above" matTooltip="{{item.data.tooltip}}"
                       class="icon icon-help-circle"></span>
               </label>
-              <mat-checkbox color="primary"
-                            [id]="option.key"
-                            *ngFor="let option of item.data.options"
-                            (ngModelChange)="onCheckBoxSelect(item)"
-                            [(ngModel)]="option.value">{{option.label}}</mat-checkbox>
+              <div>
+                <mat-checkbox color="primary"
+                              [id]="option.key"
+                              *ngFor="let option of item.data.options"
+                              (ngModelChange)="onCheckBoxSelect(item)"
+                              [(ngModel)]="option.value">{{option.label}}</mat-checkbox>
+              </div>
+              <span class="form-control__hint">{{item.data.hint}}</span>
             </section>
           </ng-container>
           <ng-container *ngSwitchCase="'radio-group'">
@@ -122,14 +128,17 @@
                 <span *ngIf="item.data.tooltip?.length" matTooltipPosition="above" matTooltip="{{item.data.tooltip}}"
                       class="icon icon-help-circle"></span>
               </label>
-              <mat-radio-group
-                [(ngModel)]="item.data.value" class="d-flex flex-column">
-                <mat-radio-button class=""
-                                  color="primary"
-                                  [id]="option.key"
-                                  *ngFor="let option of item.data.options"
-                                  [value]="option.key">{{option.label}}</mat-radio-button>
-              </mat-radio-group>
+              <div>
+                <mat-radio-group
+                  [(ngModel)]="item.data.value" class="d-flex flex-column">
+                  <mat-radio-button class=""
+                                    color="primary"
+                                    [id]="option.key"
+                                    *ngFor="let option of item.data.options"
+                                    [value]="option.key">{{option.label}}</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <span class="form-control__hint">{{item.data.hint}}</span>
             </section>
           </ng-container>
           <ng-container *ngSwitchCase="'pdf'">
@@ -139,20 +148,9 @@
                 <span *ngIf="item.data.tooltip?.length" matTooltipPosition="above" matTooltip="{{item.data.tooltip}}"
                       class="icon icon-help-circle"></span>
               </label>
-              <pdf-viewer [src]="item.data.src ?? ''"
-                          [render-text]="true"
-                          [original-size]="false"
-                          [zoom]="item.data.zoom ?? 1"
-                          style="width: 100%; height: 100%"
-              ></pdf-viewer>
-              <div class="pdf-controls">
-                <div class="zoom-btn" (click)="zoom(item.data, 'out')">
-                  <div class="icon icon-zoom-out"></div>
-                </div>
-                <div class="zoom-btn" (click)="zoom(item.data, 'in')">
-                  <div class="icon icon-zoom-in"></div>
-                </div>
-              </div>
+              <ng2-pdfjs-viewer [pdfSrc]="item.data.src ?? ''"
+                                style="width: 100%; height: 100%"
+              ></ng2-pdfjs-viewer>
             </section>
           </ng-container>
           <ng-container *ngSwitchCase="'table'">
@@ -163,13 +161,31 @@
                       class="icon icon-help-circle"></span>
               </label>
               <ui-table (onChangeTable)="resizeGridItem(item)" [tableData]="item.data.value"></ui-table>
+              <span class="form-control__hint">{{item.data.hint}}</span>
+            </section>
+          </ng-container>
+          <ng-container *ngSwitchCase="'img'">
+            <section class="form-control {{item.data.class}}">
+              <label class="form-control__label">
+                <span *ngIf="item.data.label?.length">{{ item.data.label }}</span>
+                <span *ngIf="item.data.tooltip?.length" matTooltipPosition="above" matTooltip="{{item.data.tooltip}}"
+                      class="icon icon-help-circle"></span>
+              </label>
+              <ui-pinch-zoom [minScale]="1"
+                             [disablePan]="false"
+                             [limit-zoom]="10"
+                             [draggableImage]="true"
+                             [zoomControlPosition]="'right'" [limitPan]="false" #pinch style="flex: 1">
+                <img style="flex: 1" src="https://images.unsplash.com/photo-1444927714506-8492d94b4e3d"
+                     alt=""/>
+              </ui-pinch-zoom>
+              <span class="form-control__hint">{{item.data.hint}}</span>
             </section>
           </ng-container>
 
 
         </ng-container>
       </div>
-
 
 
       <!-- Optional Custom placeholder template -->

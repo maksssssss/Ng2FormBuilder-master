@@ -1,6 +1,7 @@
 export interface Control {
   icon?: string
   label?: string
+  key?: string
   placeholder?: string
   class?: string,
   value?: any,
@@ -19,5 +20,5 @@ export interface Control {
     value: string | number | boolean,
     selected?: boolean,
   }[],
-  type: 'email' | 'password' | 'text' | 'number' | 'date' | 'time' | 'select' | 'autocomplete' | 'checkbox-group' | 'radio-group' | 'pdf' | 'table',
+  type: 'email' | 'password' | 'text' | 'number' | 'date' | 'time' | 'select' | 'autocomplete' | 'checkbox-group' | 'radio-group' | 'pdf' | 'table' | 'img',
 }

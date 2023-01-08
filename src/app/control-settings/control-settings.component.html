@@ -10,6 +10,10 @@
     [(ngModel)]="control.label"
     [label]="'Название'"></ui-input>
   <ui-input
+    ngDefaultControl
+    [(ngModel)]="control.key"
+    [label]="'Имя переменной'"></ui-input>
+  <ui-input
     *ngIf="control.type !== 'table' && control.type !== 'pdf'"
     ngDefaultControl
     [(ngModel)]="control.placeholder"
@@ -24,17 +28,24 @@
 <!--    [label]="'Подсказка с верху (Tooltip)'"></ui-input>-->
   <ui-input
     ngDefaultControl
+    *ngIf="control.type !== 'pdf'"
     [(ngModel)]="control.hint"
     [label]="'Подсказка'"></ui-input>
   <ui-input
     ngDefaultControl
     [(ngModel)]="control.value"
-    *ngIf="!['pdf', 'table'].includes(control.type)"
+    *ngIf="!['pdf', 'img', 'table', 'checkbox-group', 'radio-group'].includes(control.type)"
+    [label]="'Значение'"></ui-input>
+  <ui-input
+    ngDefaultControl
+    [ngModel]="control.value | json"
+    [disabled]="true"
+    *ngIf="['checkbox-group', 'radio-group', 'table'].includes(control.type)"
     [label]="'Значение'"></ui-input>
   <ui-input
     ngDefaultControl
     [(ngModel)]="control.src"
-    *ngIf="control.type === 'pdf'"
+    *ngIf="['pdf', 'img'].includes(control.type)"
     [label]="'URL файла'"></ui-input>
   <ui-input
     ngDefaultControl

@@ -80,9 +80,11 @@ export class FormContainerComponent {
     let y = 0;
     let h = 2.1;
     if (control.type === 'table') {
-      h = 3.5;
+      h = 3.8;
     } else if (control.type === 'pdf') {
       h = 12;
+    } else if (control.type === 'img') {
+      h = 4;
     }
     if (lastItem) {
       console.log(lastItem)

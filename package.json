@@ -1,6 +1,6 @@
 {
   "name": "ng2-form-builder",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4444",
@@ -22,7 +22,8 @@
     "@katoid/angular-grid-layout": "^2.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
-    "ng2-pdf-viewer": "^9.1.3",
+    "iv-viewer": "^2.0.1",
+    "ng2-pdfjs-viewer": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
